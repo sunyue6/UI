@@ -2,7 +2,13 @@ import { Result, Header, Main, Coding } from "@/layout"
 import useCoding from "@/hooks/useCoding.js"
 
 function Check() {
-    const [fileRaw, setFileRaw] = useState("function foo(){ // Hello Web3 \n \n return {a:1,b:{c:2} ,d:[{haha:'hello'}]} \n}")
+    const [fileRaw, setFileRaw] = useState("function foo(params) {\n" +
+        "  console.log(\"test:\", params.toString())\n" +
+        "}\n" +
+        "\n" +
+        "function foo2() {\n" +
+        "  console.log(\"foo2\");\n" +
+        "}")
     const { code: [code, setCode], results: [results], handleExecute } = useCoding(fileRaw)
 
     return (
